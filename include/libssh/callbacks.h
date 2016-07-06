@@ -483,11 +483,11 @@ typedef struct ssh_socket_callbacks_struct *ssh_socket_callbacks;
  * ssh_callbacks_iterate_end();
  * @endcode
  */
-#define ssh_callbacks_iterate(_cb_list, _cb_type, _cb_name)           \
+#define ssh_callbacks_iterate(_cb_list, _cb_type, _cb_p_type, _cb_name)\
     do {                                                              \
         struct ssh_iterator *_cb_i = ssh_list_get_iterator(_cb_list); \
         _cb_type _cb;                                                 \
-        __typeof__(_cb->_cb_name) _cb_p;                              \
+        _cb_p_type _cb_p;                                             \
         for (; _cb_i != NULL; _cb_i = _cb_i->next) {                  \
             _cb = ssh_iterator_value(_cb_type, _cb_i);                \
             if (ssh_callbacks_exists(_cb, _cb_name) &&                \

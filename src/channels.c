@@ -546,6 +546,7 @@ SSH_PACKET_CALLBACK(channel_rcv_data){
 
   ssh_callbacks_iterate(channel->callbacks,
                         ssh_channel_callbacks,
+						ssh_channel_data_callback,
                         channel_data_function) {
       if (ssh_buffer_get(buf) == 0) {
           break;
